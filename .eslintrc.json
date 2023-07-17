@@ -1,3 +1,79 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "next/core-web-vitals",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:json/recommended",
+    "plugin:sonarjs/recommended"
+  ],
+  "plugins": [
+    "prettier",
+    "react",
+    "react-hooks",
+    "@typescript-eslint",
+    "simple-import-sort",
+    "sonarjs"
+  ],
+  "rules": {
+    "@next/next/no-html-link-for-pages": ["error", "apps/next/app/"],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "eqeqeq": "error",
+    "logical-assignment-operators": ["warn", "always"],
+    "no-console": "warn",
+    "no-undef": "off",
+    "no-unreachable": "error",
+    "no-unused-vars": "off",
+    "prettier/prettier": "warn",
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react/display-name": "off",
+    "react/no-children-prop": "off",
+    "react/react-in-jsx-scope": "off",
+    "simple-import-sort/exports": "warn",
+    "simple-import-sort/imports": "warn",
+    "sonarjs/no-extra-arguments": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.js", "**/*.ts", "**/*.tsx"],
+      "rules": {
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              ["^react$", "^next", "^[a-z]"],
+              ["^@"],
+              ["^~"],
+              ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+              ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+              ["^.+\\.s?css$"],
+              ["^\\u0000"]
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "ignorePatterns": ["node_modules", "build", "dist", "public"]
 }

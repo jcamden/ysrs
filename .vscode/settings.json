@@ -1,0 +1,27 @@
+{
+  "files.autoSave": "onFocusChange",
+
+  // formatting
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "eslint.rules.customizations": [
+    { "rule": "prettier/prettier", "severity": "warn" },
+    { "rule": "no-unused-vars", "severity": "warn" }
+  ],
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+
+  // behaviors
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  "diffEditor.ignoreTrimWhitespace": false,
+
+  "cSpell.words": ["djinndex", "edgedb"]
+}

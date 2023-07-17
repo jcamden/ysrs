@@ -1,0 +1,36 @@
+.char-bg {
+    font-size: 32rem;
+    background: repeating-radial-gradient(
+        /* rgba(255, 0, 0, 1) 10%,
+        rgba(255, 255, 0, 1) 10%,
+        rgba(0, 255, 0, 1) 10%,
+        rgba(0, 255, 255, 1) 10%,
+        rgba(0, 0, 255, 1) 10%,
+        rgba(255, 0, 255, 1) 10% */
+        #ff0000 10%,
+        #ffff00 30%,
+        #26ff00 40%,
+        #00d9fa 50%,
+        #1500ff 70%,
+        #ff00ae 90%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    background-size: 50% auto;
+    animation: textShine 120s linear infinite alternate;
+}
+
+.char {
+    text-shadow: rgb(0, 0, 0) -10px -5px 0px;
+}
+
+@keyframes textShine {
+    0% {
+        background-position: -500% 50%;
+    }
+    100% {
+        background-position: 1500% 50%;
+    }
+}
