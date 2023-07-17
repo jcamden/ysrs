@@ -1,5 +1,8 @@
-.char-bg {
+.big-text {
     font-size: 32rem;
+}
+
+.char-bg {
     background: repeating-radial-gradient(
         /* rgba(255, 0, 0, 1) 10%,
         rgba(255, 255, 0, 1) 10%,
