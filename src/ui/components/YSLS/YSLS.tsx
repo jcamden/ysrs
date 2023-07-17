@@ -1,8 +1,16 @@
 "use client";
 
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useTheme } from "next-themes";
 
+import { DispatchContext, StateContext } from "@/state";
+import { ActionTypes } from "@/state/actions";
 import { animated, easings, useSpring } from "@react-spring/web";
 
 import { speak } from "./speak";
@@ -11,23 +19,29 @@ import "./char.css";
 
 // import { ThemeChanger } from '../../organisms';
 
-const handleKeyDown = (
-  e: KeyboardEvent,
-  voices: SpeechSynthesisVoice[],
-  setCurrentKey: Dispatch<SetStateAction<string>>
-) => {
-  //   alert(e.key);
-  if (voices.length === 0 && e.key.length === 1) {
+interface HandleKeyDown {
+  e: KeyboardEvent;
+  song?: HTMLAudioElement;
+  voices: SpeechSynthesisVoice[];
+  setCurrentKey: Dispatch<SetStateAction<string>>;
+}
+const handleKeyDown = ({ e, song, voices, setCurrentKey }: HandleKeyDown) => {
+  if (voices.length !== 0 && e.key.length === 1 && song) {
     setCurrentKey(e.key);
     speak(e.key);
+    song.src = "/songs/Tchaikovsky - Nutcracker - Overture.mp3";
+    song.play();
   }
 };
 
 export const YSLS = () => {
   const { setTheme } = useTheme();
-  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+
   const [loaded, setLoaded] = useState(false);
   const [currentKey, setCurrentKey] = useState("");
+
+  const dispatch = useContext(DispatchContext);
+  const { song, voices } = useContext(StateContext);
 
   const { x } = useSpring({
     from: {
@@ -38,21 +52,24 @@ export const YSLS = () => {
     },
     delay: 0,
     config: {
-      // mass: 1,
-      // tension: 100,
-      // friction: 10,
       duration: 1000,
       easing: easings.easeOutCirc,
     },
   });
 
   useEffect(() => {
-    if (voices.length === 0) {
-      setVoices(window.speechSynthesis.getVoices());
-    }
+    speechSynthesis.addEventListener("voiceschanged", () => {
+      const voices = window.speechSynthesis.getVoices();
+      dispatch({
+        type: ActionTypes.setVoices,
+        payload: voices,
+      });
+    });
   }, [voices]);
 
-  console.log(voices);
+  useEffect(() => {
+    dispatch({ type: ActionTypes.setSong, payload: new Audio() });
+  }, []);
 
   useEffect(() => {
     setTheme("dark");
@@ -65,17 +82,19 @@ export const YSLS = () => {
   }, []);
 
   useEffect(() => {
-    document.addEventListener("keydown", (e) =>
-      handleKeyDown(e, voices, setCurrentKey)
-    );
-
-    // Don't forget to clean up
-    return function cleanup() {
-      document.removeEventListener("keydown", (e) =>
-        handleKeyDown(e, voices, setCurrentKey)
+    if (song && voices.length > 0) {
+      document.addEventListener("keydown", (e) =>
+        handleKeyDown({ e, song, voices, setCurrentKey })
       );
-    };
-  }, []);
+
+      // Don't forget to clean up
+      return function cleanup() {
+        document.removeEventListener("keydown", (e) =>
+          handleKeyDown({ e, song, voices, setCurrentKey })
+        );
+      };
+    }
+  }, [song, voices]);
 
   return (
     <div>
@@ -83,12 +102,14 @@ export const YSLS = () => {
 
       {voices.length === 0 || !loaded ? (
         <div className="flex flex-col justify-center items-center">
-          <div>Loading voices...</div>
-          <animated.progress
-            className="progress-secondary w-56"
-            value={x}
-            max="100"
-          ></animated.progress>
+          <div>Loading...</div>
+          <div className="rounded-full">
+            <animated.progress
+              className="progress progress-primary w-56 rounded-full"
+              value={x}
+              max="100"
+            ></animated.progress>
+          </div>
         </div>
       ) : (
         <>
@@ -110,7 +131,9 @@ export const YSLS = () => {
               </div>
             </div>
           ) : (
-            <div> Welcome to Yaryar Symphonic Research Suite!</div>
+            <div className="text-8xl font-ubuntu text-center">
+              Welcome to <br /> Yaryar Symphonic Research Suite!
+            </div>
           )}
           {/* {voices.map((voice, index) => (
             <div key={index + voice.name}>

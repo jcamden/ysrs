@@ -1,9 +1,13 @@
-import { StateInterface } from './state';
+import { StateInterface } from "./state";
 
 export const updates = {
-  setUser: (state: StateInterface, payload: string) => ({
+  setSong: (state: StateInterface, payload: HTMLAudioElement) => ({
     ...state,
-    user: payload,
+    song: payload,
+  }),
+  setVoices: (state: StateInterface, payload: SpeechSynthesisVoice[]) => ({
+    ...state,
+    voices: payload,
   }),
   addGlobalAlert: (state: StateInterface, payload: Error) => ({
     ...state,

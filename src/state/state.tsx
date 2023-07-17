@@ -3,18 +3,20 @@ import React, {
   type Dispatch,
   type ReactNode,
   useReducer,
-} from 'react';
+} from "react";
 
-import { Actions } from './actions';
-import { appReducer } from './reducer';
+import { Actions } from "./actions";
+import { appReducer } from "./reducer";
 
 export interface StateInterface {
   globalAlerts: Error[];
-  user?: string;
+  voices: SpeechSynthesisVoice[];
+  song?: HTMLAudioElement;
 }
 
 const initialState: StateInterface = {
   globalAlerts: [],
+  voices: [],
 };
 
 interface StateProviderProps {

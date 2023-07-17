@@ -26,6 +26,10 @@
     text-shadow: rgb(0, 0, 0) -10px -5px 0px;
 }
 
+progress {
+    border-radius: 100%;
+}
+
 @keyframes textShine {
     0% {
         background-position: -500% 50%;
