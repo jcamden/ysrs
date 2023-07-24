@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { animated, easings, useSpring } from "@react-spring/web";
 
 export const Loading = () => {

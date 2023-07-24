@@ -5,7 +5,7 @@ import React, {
   useReducer,
 } from "react";
 
-import { TrackData } from "@/ui/components/YSLS2/tracks";
+import { TrackData } from "@/data/tracks";
 
 import { Actions } from "./actions";
 import { appReducer } from "./reducer";

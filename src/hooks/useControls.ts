@@ -1,16 +1,9 @@
-import {
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { Dispatch, useContext, useEffect } from "react";
 
+import { tracks } from "@/data/tracks";
 import { DispatchContext, StateContext } from "@/state";
 import { Actions, ActionTypes } from "@/state/actions";
-
-import { speak } from "./speak";
-import { tracks } from "./tracks";
+import { speak } from "@/utils";
 
 interface HandleKeyDownProps {
   e: KeyboardEvent;

@@ -1,7 +1,5 @@
 import { v4 } from "uuid";
 
-import "./char.css";
-
 export const TrackDisplay = ({
   text,
   unrenderedText,

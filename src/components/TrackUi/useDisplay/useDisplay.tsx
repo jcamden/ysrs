@@ -1,8 +1,9 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { v4 } from "uuid";
 
+import { TrackInfo } from "@/data/tracks";
+
 import { TrackDisplay } from "./TrackDisplay";
-import { TrackInfo } from "./tracks";
 
 const initializeTrackInfoDisplay = (display: string[]) => (
   <div key={v4()} className="mt-20">

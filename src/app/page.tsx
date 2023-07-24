@@ -1,9 +1,9 @@
-import { YSLS2 } from "@/ui/components/YSLS2";
+import { YSLS } from "@/components/YSLS";
 
 export default function Home() {
   return (
     <main>
-      <YSLS2 />
+      <YSLS />
     </main>
   );
 }
