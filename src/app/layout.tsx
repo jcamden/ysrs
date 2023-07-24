@@ -22,7 +22,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${ubuntu.variable}`}>
+    <html
+      suppressHydrationWarning={true}
+      lang="en"
+      className={`${ubuntu.variable}`}
+    >
       <body>
         <Providers>{children}</Providers>
       </body>

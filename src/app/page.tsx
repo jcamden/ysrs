@@ -1,11 +1,9 @@
-import { YSLS } from "@/ui/components/YSLS";
+import { YSLS2 } from "@/ui/components/YSLS2";
 
 export default function Home() {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24`}
-    >
-      <YSLS />
+    <main>
+      <YSLS2 />
     </main>
   );
 }

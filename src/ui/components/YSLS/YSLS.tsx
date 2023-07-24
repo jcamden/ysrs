@@ -8,6 +8,7 @@ import {
   useState,
 } from "react";
 import { useTheme } from "next-themes";
+import { v4 as uuidv4 } from "uuid";
 
 import { DispatchContext, StateContext } from "@/state";
 import { ActionTypes } from "@/state/actions";
@@ -26,7 +27,7 @@ interface HandleKeyDown {
   song?: HTMLAudioElement;
   voices: SpeechSynthesisVoice[];
   setCurrentKey: Dispatch<SetStateAction<string>>;
-  setCurrentDisplay: Dispatch<SetStateAction<string[] | null>>;
+  setCurrentDisplay: Dispatch<SetStateAction<JSX.Element[] | null>>;
 }
 
 const handleKeyDown = ({
@@ -47,6 +48,7 @@ const handleKeyDown = ({
   }
 
   const track = tracks[e.key];
+  const { info } = track;
 
   setCurrentKey(e.key);
 
@@ -60,13 +62,19 @@ const handleKeyDown = ({
   };
 
   let index = -1;
-  let localDisplay: string[] = [];
+  let localDisplay: JSX.Element[] = [];
+  info.forEach(() =>
+    localDisplay.push(
+      <>
+        <br />
+      </>
+    )
+  );
 
   const playTrackText = (e: SpeechSynthesisEvent) => {
-    const { info } = track;
-
     index++;
-    localDisplay = [...localDisplay, info[index].display];
+    localDisplay[index] = info[index].display;
+    localDisplay = [...localDisplay];
 
     setCurrentDisplay(localDisplay);
     speak({
@@ -84,7 +92,9 @@ export const YSLS = () => {
 
   const [loaded, setLoaded] = useState(false);
   const [currentKey, setCurrentKey] = useState("");
-  const [currentDisplay, setCurrentDisplay] = useState<string[] | null>(null);
+  const [currentDisplay, setCurrentDisplay] = useState<JSX.Element[] | null>(
+    null
+  );
 
   const dispatch = useContext(DispatchContext);
   const { song, voices } = useContext(StateContext);
@@ -155,11 +165,11 @@ export const YSLS = () => {
   }, [song, voices]);
 
   return (
-    <div>
+    <div className="h-screen w-screen flex flex-col justify-center items-center">
       {/* <ThemeChanger /> */}
 
       {voices.length === 0 || !loaded ? (
-        <div className="flex flex-col justify-center items-center">
+        <div className="h-full flex flex-col justify-center items-center">
           <div>Loading...</div>
           <div className="rounded-full">
             <animated.progress
@@ -175,11 +185,20 @@ export const YSLS = () => {
             <div className="flex flex-col justify-center items-center text-9xl font-ubuntu font-bold">
               {currentDisplay.map((trackElement, index) => (
                 <>
-                  <div key={trackElement + index} className="mt-24 char-bg">
-                    {trackElement.toUpperCase()}
+                  <div
+                    key={uuidv4()}
+                    className={`${
+                      index === 0
+                        ? ""
+                        : currentDisplay.length > 3
+                        ? "mt-16"
+                        : "mt-24"
+                    } char-bg`}
+                  >
+                    {trackElement}
                   </div>
                   <div
-                    key={trackElement + index}
+                    key={uuidv4()}
                     className="shadow"
                     style={{
                       marginTop: "-7.5rem",
@@ -187,7 +206,7 @@ export const YSLS = () => {
                       textShadow: "rgb(0, 0, 0) -3px -7px 0px",
                     }}
                   >
-                    {trackElement.toUpperCase()}
+                    {trackElement}
                   </div>
                 </>
               ))}

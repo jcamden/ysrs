@@ -38,7 +38,8 @@
     "react/react-in-jsx-scope": "off",
     "simple-import-sort/exports": "warn",
     "simple-import-sort/imports": "warn",
-    "sonarjs/no-extra-arguments": "off"
+    "sonarjs/no-extra-arguments": "off",
+    "sonarjs/no-duplicate-string": "warn"
   },
   "overrides": [
     {
