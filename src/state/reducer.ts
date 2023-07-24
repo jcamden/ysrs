@@ -11,14 +11,16 @@ export const appReducer = (
   action: Actions
 ): StateInterface => {
   switch (action.type) {
+    case ActionTypes.setKeypressDisplay:
+      return updates.setKeypressDisplay(state, action.payload);
     case ActionTypes.setSong:
       return updates.setSong(state, action.payload);
+    case ActionTypes.setTrack:
+      return updates.setTrack(state, action.payload);
     case ActionTypes.setVoices:
       return updates.setVoices(state, action.payload);
-
     case ActionTypes.addGlobalAlert:
       return updates.addGlobalAlert(state, action.payload);
-
     default:
       return updates.addGlobalAlert(state, invalidActionPayload);
   }

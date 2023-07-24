@@ -5,13 +5,21 @@ import React, {
   useReducer,
 } from "react";
 
+import { TrackData } from "@/ui/components/YSLS2/tracks";
+
 import { Actions } from "./actions";
 import { appReducer } from "./reducer";
+
+export interface Track extends TrackData {
+  key: string;
+}
 
 export interface StateInterface {
   globalAlerts: Error[];
   voices: SpeechSynthesisVoice[];
   song?: HTMLAudioElement;
+  track?: Track;
+  keypressDisplay?: string;
 }
 
 const initialState: StateInterface = {

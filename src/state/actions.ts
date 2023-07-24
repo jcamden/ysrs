@@ -1,10 +1,16 @@
+import { Track } from "./state";
+
 export enum ActionTypes {
-  setVoices = "setVoices",
   addGlobalAlert = "addGlobalAlert",
+  setKeypressDisplay = "setKeypressDisplay",
   setSong = "setSong",
+  setTrack = "setTrack",
+  setVoices = "setVoices",
 }
 
 export type Actions =
-  | { type: ActionTypes.setVoices; payload: SpeechSynthesisVoice[] }
   | { type: ActionTypes.addGlobalAlert; payload: Error }
-  | { type: ActionTypes.setSong; payload: HTMLAudioElement };
+  | { type: ActionTypes.setKeypressDisplay; payload: string | undefined }
+  | { type: ActionTypes.setSong; payload: HTMLAudioElement }
+  | { type: ActionTypes.setTrack; payload: Track | undefined }
+  | { type: ActionTypes.setVoices; payload: SpeechSynthesisVoice[] };

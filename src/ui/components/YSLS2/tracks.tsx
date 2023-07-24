@@ -7,11 +7,13 @@ export type TrackInfo = TrackInfoLine[];
 
 const tracksURL = "/tracks/";
 
+export interface TrackData {
+  url: string;
+  info: TrackInfo;
+}
+
 interface Tracks {
-  [key: string]: {
-    url: string;
-    info: TrackInfo;
-  };
+  [key: string]: TrackData;
 }
 
 export const tracks: Tracks = {

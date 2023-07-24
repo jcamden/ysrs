@@ -3,6 +3,7 @@ import { v4 } from "uuid";
 
 import { speak } from "./speak";
 import { TrackInfo } from "./tracks";
+import { useControls } from "./useControls";
 import { useDisplay } from "./useDisplay";
 
 interface TrackDisplayProps {
