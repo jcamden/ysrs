@@ -16,14 +16,16 @@ export const YSLS = () => {
     <main>
       <div className="h-screen w-screen flex flex-col justify-center items-center">
         {voices.length === 0 || !loaded ? (
-          <Loading />
+          <div className="w-96">
+            <Loading color="progress-primary" />
+          </div>
         ) : keypressDisplay ? (
           <Char>{keypressDisplay}</Char>
         ) : track ? (
           <MemoizedTrackUi track={track} />
         ) : (
           <div className="font-ubuntu text-8xl text-center">
-            Welcome to <br /> Yaryar Symphonics Research Suite
+            Welcome to <br /> Yaryar Jukebox 2
           </div>
         )}
       </div>

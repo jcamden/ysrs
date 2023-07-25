@@ -36,6 +36,16 @@ export const TrackUI = ({ track }: TrackUiProps) => {
 
   return (
     <div className="flex flex-col justify-center items-center text-9xl font-ubuntu font-bold">
+      {/* {track && (
+        <div className="absolute right-0 top-0 w-48 px-8 py-4">
+          <Loading
+            time={60000}
+            hideText
+            easing={easings.linear}
+            colorComplete="progress-success"
+          />
+        </div>
+      )} */}
       {display.map((item) => (
         <div key={v4()}>{item}</div>
       ))}

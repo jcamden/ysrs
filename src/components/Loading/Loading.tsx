@@ -1,6 +1,26 @@
-import { animated, easings, useSpring } from "@react-spring/web";
+import { useLoadTime } from "@/hooks";
+import {
+  animated,
+  EasingFunction,
+  easings,
+  useSpring,
+} from "@react-spring/web";
 
-export const Loading = () => {
+interface LoadingProps {
+  time?: number;
+  hideText?: boolean;
+  easing?: EasingFunction;
+  color?: string;
+  colorComplete?: string;
+}
+
+export const Loading = ({
+  time = 1000,
+  hideText,
+  easing,
+  color,
+  colorComplete,
+}: LoadingProps) => {
   const { x } = useSpring({
     from: {
       x: 0,
@@ -10,17 +30,21 @@ export const Loading = () => {
     },
     delay: 0,
     config: {
-      duration: 1000,
-      easing: easings.easeOutCirc,
+      duration: time,
+      easing: easing ?? easings.easeOutCirc,
     },
   });
 
+  const { loaded } = useLoadTime(time);
+
   return (
-    <div className="h-full flex flex-col justify-center items-center">
-      <div>Loading...</div>
-      <div className="rounded-full">
+    <div className="flex flex-col justify-center items-center text-base w-full">
+      {!hideText && <div className="text-3xl font-ubuntu">Loading...</div>}
+      <div className="rounded-full w-full">
         <animated.progress
-          className="progress progress-primary w-56 rounded-full"
+          className={`progress w-full rounded-full ${color ?? ""} ${
+            loaded ? colorComplete ?? "" : ""
+          }`}
           value={x}
           max="100"
         ></animated.progress>

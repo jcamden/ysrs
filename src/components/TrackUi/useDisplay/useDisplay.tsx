@@ -5,15 +5,25 @@ import { TrackInfo } from "@/data/tracks";
 
 import { TrackDisplay } from "./TrackDisplay";
 
-const initializeTrackInfoDisplay = (display: string[]) => (
-  <div key={v4()} className="mt-20">
-    <TrackDisplay text={display} unrenderedText />
+interface InitializeTrackInfoDisplayArgs {
+  display: string[];
+  noMt?: boolean;
+}
+
+const initializeTrackInfoDisplay = ({
+  display,
+  noMt,
+}: InitializeTrackInfoDisplayArgs) => (
+  <div key={v4()} className={noMt ? "" : "mt-20"}>
+    <TrackDisplay text={display} hiddenText />
   </div>
 );
 
 const getInitialDisplay = (trackInfo: TrackInfo) =>
-  trackInfo.map((item) => (
-    <div key={v4()}>{initializeTrackInfoDisplay(item.display)}</div>
+  trackInfo.map(({ display }, index) => (
+    <div key={v4()}>
+      {initializeTrackInfoDisplay({ display, noMt: index === 0 })}
+    </div>
   ));
 
 interface IncrementDisplayArgs {
@@ -31,7 +41,7 @@ const incrementDisplay = ({
   setDisplay(
     display.map((item, index) =>
       index === indexDisplayed ? (
-        <div key={v4()} className="mt-20">
+        <div key={v4()} className={index === 0 ? "" : "mt-20"}>
           <TrackDisplay text={trackInfo[index].display} />
         </div>
       ) : (
