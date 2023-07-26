@@ -1,6 +1,9 @@
 import {
   Bach__Brandenburg_Concerto_No_1_I_Allegro,
   Bach__Brandenburg_Concerto_No_1_III_Allegro,
+  Bach__Brandenburg_Concerto_No_1_IV_Menuetto,
+  Bach__Brandenburg_Concerto_No_2_III_Allegro_assai,
+  Bach__Brandenburg_Concerto_No_3_I_Allegro_moderato,
   Debussy__Reverie_for_Oboe_and_Harp,
   Stream_of_Praise__Jesus_Youre_In_MyHeart,
   Stream_of_Praise__Love_The_Lord_Your_God,
@@ -15,7 +18,6 @@ interface Tracks {
   [key: string]: TrackData;
 }
 
-
 // TODO: custom gradients for each track
 export const tracks: Tracks = {
   F1: Stream_of_Praise__Jesus_Youre_In_MyHeart,
@@ -25,6 +27,9 @@ export const tracks: Tracks = {
   //
   "1": Bach__Brandenburg_Concerto_No_1_I_Allegro,
   "2": Bach__Brandenburg_Concerto_No_1_III_Allegro,
+  "3": Bach__Brandenburg_Concerto_No_1_IV_Menuetto,
+  "4": Bach__Brandenburg_Concerto_No_2_III_Allegro_assai,
+  "5": Bach__Brandenburg_Concerto_No_3_I_Allegro_moderato,
   //
   q: Tchaikovsky__The_Nutcracker__Overture,
   w: Tchaikovsky__The_Nutcracker__Dance_of_the_Sugar_Plum_Fairy,

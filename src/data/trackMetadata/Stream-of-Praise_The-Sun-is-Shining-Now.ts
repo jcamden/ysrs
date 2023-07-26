@@ -6,7 +6,7 @@ export const Stream_of_Praise__The_Sun_is_Shining_Now: TrackData = {
   path: trackPath,
   info: [
     {
-      display: ["The Sun is,", "Shining Now"],
+      display: ["The Sun is", "Shining Now"],
       tts: "The Sun is Shining Now",
     },
     {

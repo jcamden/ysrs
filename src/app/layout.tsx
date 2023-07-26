@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
+import localFont from "next/font/local";
+
+const jammycreamer = localFont({
+  src: "./Jammycreamer.ttf",
+  variable: "--font-jammyCreamer",
+});
 
 import { Providers } from "./providers";
 
@@ -25,7 +31,7 @@ export default function RootLayout({
     <html
       suppressHydrationWarning={true}
       lang="en"
-      className={`${ubuntu.variable}`}
+      className={`${ubuntu.variable} ${jammycreamer.variable}`}
     >
       <body>
         <Providers>{children}</Providers>

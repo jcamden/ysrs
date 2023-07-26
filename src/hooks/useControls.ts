@@ -87,14 +87,16 @@ const handleKeyDown = ({ e, dispatch, song }: HandleKeyDownProps) => {
     speak({
       text: e.key,
       onEnd: () => {
-        dispatch({
-          type: ActionTypes.setKeypressDisplay,
-          payload: undefined,
-        });
-        dispatch({
-          type: ActionTypes.setTrack,
-          payload: { ...tracks[e.key], key: e.key },
-        });
+        setTimeout(() => {
+          dispatch({
+            type: ActionTypes.setKeypressDisplay,
+            payload: undefined,
+          });
+          dispatch({
+            type: ActionTypes.setTrack,
+            payload: { ...tracks[e.key], key: e.key },
+          });
+        }, 1500);
       },
     });
   }
