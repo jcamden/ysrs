@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { v4 } from "uuid";
 
-import { TrackInfo } from "@/data/tracks";
+import { TrackInfo } from "@/data/trackMetadata";
 
 import { TrackDisplay } from "./TrackDisplay";
 

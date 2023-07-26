@@ -13,7 +13,7 @@ interface TrackUiProps {
 }
 
 export const TrackUI = ({ track }: TrackUiProps) => {
-  const { info, url } = track;
+  const { filename, info, path } = track;
   const [indexDisplayed, setIndexDisplayed] = useState(0);
   const [ttsText, setTtsText] = useState(info[0].tts);
   const { song } = useContext(StateContext);
@@ -25,7 +25,7 @@ export const TrackUI = ({ track }: TrackUiProps) => {
       text: ttsText,
       onEnd: () => {
         if (indexDisplayed === info.length - 1 && song) {
-          playTrack(song, url, dispatch);
+          playTrack(song, path + filename, dispatch);
         } else if (indexDisplayed < info.length - 1) {
           incrementTts({ indexDisplayed, setTtsText, trackInfo: info });
           setIndexDisplayed(indexDisplayed + 1);

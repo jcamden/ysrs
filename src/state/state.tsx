@@ -5,7 +5,7 @@ import React, {
   useReducer,
 } from "react";
 
-import { TrackData } from "@/data/tracks";
+import { TrackData } from "@/data/trackMetadata";
 
 import { Actions } from "./actions";
 import { appReducer } from "./reducer";
