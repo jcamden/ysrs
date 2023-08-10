@@ -18,7 +18,7 @@ export const YSLS = () => {
 
   return (
     <main>
-      <div className="h-screen w-screen flex flex-col justify-center items-center">
+      <div className="h-screen w-screen flex flex-col justify-center items-center bg-black">
         {voices.length === 0 || !loaded ? (
           <div className="w-96">
             <Loading color="progress-primary" />
