@@ -2,7 +2,7 @@ import { trackPath } from "./common";
 import { TrackData } from "./types";
 
 export const Shining_Force_II__Welcome_to_our_Town: TrackData = {
-  filename: `Shining Force II - Welcome to our Town.mp3`,
+  filename: `Shining Force II - Welcome To Our Town.mp3`,
   path: trackPath,
   info: [
     {
