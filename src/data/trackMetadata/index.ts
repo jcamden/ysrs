@@ -33,6 +33,7 @@ export * from "./Tchaikovsky_The-Nutcracker_Entertainment-and-Russian-Trepak-Dan
 export * from "./Tchaikovsky_The-Nutcracker_March";
 export * from "./Tchaikovsky_The-Nutcracker_Overture";
 export * from "./Tchaikovsky_The-Nutcracker_Waltz-of-the-Flowers";
+export * from "./test";
 export * from "./Tim-Hart-and-Friends_The-Grand-Old-Duke-of-York";
 export * from "./types";
 export * from "./Vivaldi_Autumn-I";
