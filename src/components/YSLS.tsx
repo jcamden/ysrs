@@ -16,6 +16,9 @@ export const YSLS = () => {
   useSong();
   useControls();
 
+  // console.log("YSLS");
+  // console.log(track);
+
   return (
     <main>
       <div className="h-screen w-screen flex flex-col justify-center items-center bg-black">
