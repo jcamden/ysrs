@@ -1,4 +1,4 @@
-import { tracks } from "@/data";
+import { tracksClassical } from "@/data";
 import { ActionTypes } from "@/state/actions";
 import { speak } from "@/utils";
 
@@ -21,7 +21,7 @@ export const handleKeyDown = ({ e, dispatch, song }: HandleKeyDownProps) => {
   }
 
   // play track
-  if (Object.keys(tracks).includes(e.key)) {
+  if (Object.keys(tracksClassical).includes(e.key)) {
     dispatch({
       type: ActionTypes.setKeypressDisplay,
       payload: e.key,
@@ -36,7 +36,7 @@ export const handleKeyDown = ({ e, dispatch, song }: HandleKeyDownProps) => {
           });
           dispatch({
             type: ActionTypes.setTrack,
-            payload: { ...tracks[e.key], key: e.key },
+            payload: { ...tracksClassical[e.key], key: e.key },
           });
         }, 1500);
       },
