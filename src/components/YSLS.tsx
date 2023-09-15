@@ -19,6 +19,10 @@ export const YSLS = () => {
   // console.log("YSLS");
   // console.log(track);
 
+  const keypressDisplayIsLetter = keypressDisplay?.match(/^[a-z]$/);
+  console.log(keypressDisplay);
+  console.log(keypressDisplayIsLetter);
+
   return (
     <main>
       <div className="h-screen w-screen flex flex-col justify-center items-center bg-black">
@@ -27,7 +31,9 @@ export const YSLS = () => {
             <Loading color="progress-primary" />
           </div>
         ) : keypressDisplay ? (
-          <Char>{keypressDisplay}</Char>
+          <Char>{`${
+            keypressDisplayIsLetter ? keypressDisplay.toUpperCase() : ""
+          }${keypressDisplay}`}</Char>
         ) : track ? (
           <MemoizedTrackUi track={track} />
         ) : (
