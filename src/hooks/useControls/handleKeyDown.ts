@@ -17,7 +17,7 @@ const keySpeeches: { [key: string]: KeySpeech } = {
   },
   b: {
     display: `BALL`,
-    speech: "b, a, l, l. Ball. Ball starts with a.",
+    speech: "b, a, l, l. Ball. Ball starts with b.",
   },
   c: {
     display: `CAR`,
@@ -57,7 +57,7 @@ const keySpeeches: { [key: string]: KeySpeech } = {
   },
   l: {
     display: `LOVE`,
-    speech: "l, o, v, e. Love. Love start with l.",
+    speech: "l, o, v, e. Love. Love starts with l.",
   },
   m: {
     display: `MOM`,
@@ -65,7 +65,7 @@ const keySpeeches: { [key: string]: KeySpeech } = {
   },
   n: {
     display: `NO`,
-    speech: "n, o. No. No starts with n.",
+    speech: "n, o. No . No starts with n.",
   },
   o: {
     display: `ON`,
@@ -73,7 +73,7 @@ const keySpeeches: { [key: string]: KeySpeech } = {
   },
   p: {
     display: `PARK`,
-    speech: "p, a, r, k. Park. Park stars with p.",
+    speech: "p, a, r, k. Park. Park starts with p.",
   },
   q: {
     display: `QUIET`,
@@ -93,7 +93,7 @@ const keySpeeches: { [key: string]: KeySpeech } = {
   },
   u: {
     display: `UP`,
-    speech: "u, p. Up. Up starts with u.",
+    speech: "u, p . Up. Up starts with u.",
   },
   v: {
     display: `VERY`,
